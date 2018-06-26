@@ -16,23 +16,46 @@ app.use(bodyParser.json());
 
 
 app.get("/", function(req, res){
-    res.render("theme-blue");
+    res.render("index");
 });
 
-app.get("/red", function(req, res){
-    res.render("theme-red");
+app.get("/verkoop", function(req, res){
+    res.render("verkoop");
 });
 
-app.get("/green", function(req, res){
-    res.render("theme-green");
+app.get("/verhuur", function(req, res){
+    res.render("verhuur");
 });
 
-app.get("/yellow", function(req, res){
-    res.render("theme-yellow");
+app.get("/onderhoud", function(req, res){
+    res.render("onderhoud");
 });
 
-app.get("/test", function(req, res){
-    res.render("bedankt");
+app.get("/contact", function(req, res){
+    res.render("contact");
+});
+
+app.get("/send", function(req, res){
+    res.render("contact-bedankt");
+});
+
+app.use(function(req, res, next){
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', { url: req.url });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
 });
 
 app.post("/send", (req, res) => {
@@ -45,7 +68,7 @@ app.post("/send", (req, res) => {
         <li>Email : ${req.body.email}</li>
         <li>Telefoon : ${req.body.tel}</li>
     </ul>
-    <p>${req.body.bericht}<p>
+    <p>Bericht : ${req.body.bericht}<p>
     `
     
     // create reusable transporter object using the default SMTP transport
@@ -59,7 +82,7 @@ app.post("/send", (req, res) => {
 });
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"3DWD" <mailserver163@gmail.com>', // sender address
+        from: '"www.passiermuziekemmen.nl" <mailserver163@gmail.com>', // sender address
         to: 'niek_losenoord@hotmail.com', // list of receivers
         subject: name + ' Heeft een bericht gestuurd via de website.', // Subject line
         text: '', // plain text body
@@ -77,7 +100,7 @@ app.post("/send", (req, res) => {
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
         
-        res.render("bedankt")
+        res.render("contact-bedankt")
         
     });
 });
@@ -116,5 +139,5 @@ app.post("/send", (req, res) => {
 //     }); });
 
 app.listen(process.env.PORT, process.env.IP, function(){ // tell node to listen & define a port to view app
-    console.log("3D Web Dev server starting...");
+    console.log("Passier server starting...");
 });
