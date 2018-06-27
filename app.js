@@ -39,6 +39,10 @@ app.get("/send", function(req, res){
     res.render("bedankt");
 });
 
+app.get("/privacy", function(req, res){
+    res.render("privacy");
+});
+
 // app.use(function(req, res, next){
 //   res.status(404);
 
