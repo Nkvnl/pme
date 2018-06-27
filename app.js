@@ -36,27 +36,27 @@ app.get("/contact", function(req, res){
 });
 
 app.get("/send", function(req, res){
-    res.render("contact-bedankt");
+    res.render("bedankt");
 });
 
-app.use(function(req, res, next){
-  res.status(404);
+// app.use(function(req, res, next){
+//   res.status(404);
 
-  // respond with html page
-  if (req.accepts('html')) {
-    res.render('404', { url: req.url });
-    return;
-  }
+//   // respond with html page
+//   if (req.accepts('html')) {
+//     res.render('404', { url: req.url });
+//     return;
+//   }
 
-  // respond with json
-  if (req.accepts('json')) {
-    res.send({ error: 'Not found' });
-    return;
-  }
+//   // respond with json
+//   if (req.accepts('json')) {
+//     res.send({ error: 'Not found' });
+//     return;
+//   }
 
-  // default to plain-text. send()
-  res.type('txt').send('Not found');
-});
+//   // default to plain-text. send()
+//   res.type('txt').send('Not found');
+// });
 
 app.post("/send", (req, res) => {
     var name = (req.body.name);
@@ -100,7 +100,7 @@ app.post("/send", (req, res) => {
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
         
-        res.render("contact-bedankt")
+        res.render("bedankt")
         
     });
 });

@@ -112,7 +112,7 @@ body{
 }
 
 .divi{
-    font-size:120%;
+    font-size:140%;
 }
 
 #home-section{
@@ -138,13 +138,13 @@ body{
 }
 
 #home404{
-        background: linear-gradient(rgba(50,50,50,.5), rgba(50,50,50,0.5)) , url("https://images.pexels.com/photos/359995/pexels-photo-359995.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        background: white;
 
 }
 
 ._404{
-    margin-top:250px;
-    font-size:200%;
+    /*margin-top:250px;*/
+    font-size:100%;
 }
 
 ._4041{
@@ -182,6 +182,10 @@ body{
     background-position:center;
 }
 
+.card{
+    border: 2px solid gray!important;
+}
+
 .card-verkoop{
     box-shadow: 5px 5px 3px #898888!important;
     background: rgba(255,255,255,1)!important;
@@ -195,7 +199,6 @@ li:hover{
     border-bottom:1.5px solid #bba26a;
     border-top:1.5px solid #bba26a;
     /*margin:auto;*/
-    
 }
 
 li{
