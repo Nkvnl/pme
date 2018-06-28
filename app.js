@@ -87,7 +87,7 @@ app.post("/send", (req, res) => {
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"www.passiermuziekemmen.nl" <mailserver163@gmail.com>', // sender address
-        to: 'niek_losenoord@hotmail.com', // list of receivers
+        to: 'passiermuziek@gmail.com', // list of receivers
         subject: name + ' Heeft een bericht gestuurd via de website.', // Subject line
         text: '', // plain text body
         html: output // html body
