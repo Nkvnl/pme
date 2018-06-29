@@ -40,8 +40,7 @@ body{
 
 ._5 {
   -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
-}
+  animation-delay: 1.5s; }
 
 .fa{
     font-size:60%;
@@ -182,7 +181,7 @@ body{
     background-position:center;
 }
 
-.card{
+.card1{
     border: 2px solid gray!important;
 }
 
