@@ -1,8 +1,8 @@
-var express    = require("express"); // call express
+var express = require("express"); // call express
 var bodyParser = require("body-parser");
 var nodemailer = require("nodemailer");
 // const exphbs     = require("handlebars");
-var app        = express();
+var app = express();
 
 
 
@@ -15,31 +15,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.get("/", function(req, res){
+app.get("/", function(req, res) {
     res.render("index");
 });
 
-app.get("/verkoop", function(req, res){
+app.get("/verkoop", function(req, res) {
     res.render("verkoop");
 });
 
-app.get("/verhuur", function(req, res){
+app.get("/verhuur", function(req, res) {
     res.render("verhuur");
 });
 
-app.get("/onderhoud", function(req, res){
+app.get("/onderhoud", function(req, res) {
     res.render("onderhoud");
 });
 
-app.get("/contact", function(req, res){
+app.get("/contact", function(req, res) {
     res.render("contact");
 });
 
-app.get("/send", function(req, res){
+app.get("/send", function(req, res) {
     res.render("bedankt");
 });
 
-app.get("/privacy", function(req, res){
+app.get("/privacy", function(req, res) {
     res.render("privacy");
 });
 
@@ -70,24 +70,24 @@ app.post("/send", (req, res) => {
     <ul>
         <li>Naam : ${req.body.name}</li>
         <li>Email : ${req.body.email}</li>
-        <li>Telefoon : ${req.body.tel}</li>
+        <li>Onderwerp : ${req.body.ondw}</li>
     </ul>
     <p>Bericht : ${req.body.bericht}<p>
     `
-    
+
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    auth: {
-        user: 'mailserver163@gmail.com',
-        pass: 'ma1ls3rv3r'
-    }
-});
+        host: 'smtp.gmail.com',
+        port: 587,
+        auth: {
+            user: 'mailserver163@gmail.com',
+            pass: 'ma1ls3rv3r'
+        }
+    });
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"www.passiermuziekemmen.nl" <mailserver163@gmail.com>', // sender address
-        to: 'passiermuziek@gmail.com', // list of receivers
+        from: '"3DWD Mailserver163" <mailserver163@gmail.com>', // sender address
+        to: 'passiermuziekemmen@gmail.com', // list of receivers
         subject: name + ' Heeft een bericht gestuurd via de website.', // Subject line
         text: '', // plain text body
         html: output // html body
@@ -103,9 +103,9 @@ app.post("/send", (req, res) => {
 
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-        
+
         res.render("bedankt")
-        
+
     });
 });
 
@@ -142,6 +142,6 @@ app.post("/send", (req, res) => {
 //   smtpTransport.close(); 
 //     }); });
 
-app.listen(process.env.PORT, process.env.IP, function(){ // tell node to listen & define a port to view app
+app.listen(process.env.PORT, process.env.IP, function() { // tell node to listen & define a port to view app
     console.log("Passier server starting...");
 });
