@@ -1,13 +1,11 @@
 var express = require("express"); // call express
 var bodyParser = require("body-parser");
 var nodemailer = require("nodemailer");
-// const exphbs     = require("handlebars");
 var app = express();
 
 
-
+app.set('port', (process.env.PORT || 3005))
 app.set("view engine", "ejs");
-// app.engine("handelbars", exphbs());
 app.use(express.static("public"));
 app.use(express.static(__dirname + "/public"));
 
@@ -42,25 +40,6 @@ app.get("/send", function(req, res) {
 app.get("/privacy", function(req, res) {
     res.render("privacy");
 });
-
-// app.use(function(req, res, next){
-//   res.status(404);
-
-//   // respond with html page
-//   if (req.accepts('html')) {
-//     res.render('404', { url: req.url });
-//     return;
-//   }
-
-//   // respond with json
-//   if (req.accepts('json')) {
-//     res.send({ error: 'Not found' });
-//     return;
-//   }
-
-//   // default to plain-text. send()
-//   res.type('txt').send('Not found');
-// });
 
 app.post("/send", (req, res) => {
     var name = (req.body.name);
@@ -109,39 +88,6 @@ app.post("/send", (req, res) => {
     });
 });
 
-// app = express.createServer();
-
-// app.use(express.bodyParser());
-
-// app.post('/formProcess', function (req, res) {
-//     var data=req.body;
-//   var Naam = req.body["g52-name"];
-//   var mail = req.body["g52-email"];
-//   var Telefoon = req.body["g52-website"];
-//   var Bericht = req.body["g52-comment"];
-
-//     var smtpTransport = nodemailer.createTransport("SMTP",{
-//       service: "Gmail", 
-//       auth: {
-//       user: "niekvanlosenoord@gmail.com",
-//       pass: "*******"
-//       }});
-
-//   smtpTransport.sendMail({  //email options
-//   from: "Sender Name <3DWD@gmail.com>",
-//   to: "Receiver Name <niekvanlosenoord@email.com, niek_losenoord@hotmail.com>", // receiver
-//   subject: "Nieuw bericht op 3DWD", // subject
-//   html: "here your data goes" // body (var data which we've declared)
-//     }, function(error, response){  //callback
-//          if(error){
-//           console.log("De mailserver is tijdelijk offline, probeer het later opnieuw of mail mij direct op niek_losenoord@hotmail.com");
-//         }else{
-//           console.log("Bedankt voor je bericht! U krijgt binnen 24 uur reactie.");
-//       }
-
-//   smtpTransport.close(); 
-//     }); });
-
-app.listen(process.env.PORT, process.env.IP, function() { // tell node to listen & define a port to view app
-    console.log("Passier server starting...");
+app.listen(app.get('port'), function() {
+    console.log('starting');
 });
